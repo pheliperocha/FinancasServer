@@ -302,7 +302,7 @@ public class FinancasService {
                 query = "UPDATE movimento SET nome = '" + value + "' WHERE id = " + id + ";";
                 break;
             case 4:
-                query = "UPDATE movimento SET categoria = '" + value + "' WHERE id = " + id + ";";
+                query = "UPDATE movimento SET id_cat = (SELECT id FROM categoria WHERE nome = '" + value + "') WHERE id = " + id + ";";
                 break;
             case 5:
                 query = "UPDATE movimento SET frequencia = '" + value + "' WHERE id = " + id + ";";
