@@ -20,6 +20,9 @@ import model.Movimento;
 @WebService(serviceName = "FinancasService")
 public class FinancasService {
 
+    private static final String dbUrl = "jdbc:mysql://localhost/financasDB?zeroDateTimeBehavior=convertToNull";
+    private static final String dbClass = "com.mysql.jdbc.Driver";
+    private static final String userName = "root", password = "";
     /**
      * This is a sample web service operation
      * @return 
@@ -27,10 +30,7 @@ public class FinancasService {
     @WebMethod(operationName = "listarMovimentos")
     public ArrayList<Movimento> listarMovimentos() {
         
-        String dbUrl = "jdbc:mysql://localhost/financasDB?zeroDateTimeBehavior=convertToNull";
-        String dbClass = "com.mysql.jdbc.Driver";
         String query = "SELECT M.id, C.nome as categoria, M.nome, M.valor, M.data, M.frequencia FROM movimento M JOIN categoria C ON M.id_cat = C.id";
-        String userName = "root", password = "";
         ArrayList<Movimento> listMovimento = new ArrayList();
         
         try {
@@ -65,10 +65,7 @@ public class FinancasService {
     @WebMethod(operationName = "listarCategorias")
     public ArrayList<Categoria> listarCategorias() {
         
-        String dbUrl = "jdbc:mysql://localhost/financasDB?zeroDateTimeBehavior=convertToNull";
-        String dbClass = "com.mysql.jdbc.Driver";
         String query = "SELECT id, nome FROM categoria";
-        String userName = "root", password = "";
         ArrayList<Categoria> listCategoria = new ArrayList();
         
         try {
@@ -105,9 +102,6 @@ public class FinancasService {
     public double getTotal(@WebParam(name = "type") String type) {
         
         double total = 0;
-        String dbUrl = "jdbc:mysql://localhost/financasDB?zeroDateTimeBehavior=convertToNull";
-        String dbClass = "com.mysql.jdbc.Driver";
-        String userName = "root", password = "";
         
         String query;
         
@@ -161,9 +155,6 @@ public class FinancasService {
     ) {
         
         int total = 0;
-        String dbUrl = "jdbc:mysql://localhost/financasDB?zeroDateTimeBehavior=convertToNull";
-        String dbClass = "com.mysql.jdbc.Driver";
-        String userName = "root", password = "";
         
         String query = "INSERT INTO movimento (id, id_cat, nome, valor, data, frequencia) VALUES (NULL, " + categoria + ", '" + nome + "', " + valor + ", '" + data + "', " + frequencia + ")";
         
@@ -191,9 +182,6 @@ public class FinancasService {
     ) {
         
         int total = 0;
-        String dbUrl = "jdbc:mysql://localhost/financasDB?zeroDateTimeBehavior=convertToNull";
-        String dbClass = "com.mysql.jdbc.Driver";
-        String userName = "root", password = "";
         
         String query = "INSERT INTO categoria (id, nome) VALUES (NULL, '" + nome + "')";
         
@@ -219,9 +207,6 @@ public class FinancasService {
     public int deletarMovimento(@WebParam(name = "id") int id) {
         
         int total = 0;
-        String dbUrl = "jdbc:mysql://localhost/financasDB?zeroDateTimeBehavior=convertToNull";
-        String dbClass = "com.mysql.jdbc.Driver";
-        String userName = "root", password = "";
         
         String query = "DELETE FROM movimento WHERE id = " + id;
         
@@ -247,9 +232,6 @@ public class FinancasService {
     public int deletarCategoria(@WebParam(name = "id") String id) {
         
         int total = 0;
-        String dbUrl = "jdbc:mysql://localhost/financasDB?zeroDateTimeBehavior=convertToNull";
-        String dbClass = "com.mysql.jdbc.Driver";
-        String userName = "root", password = "";
         
         String query = "DELETE FROM categoria WHERE id = " + id;
         
@@ -289,9 +271,6 @@ public class FinancasService {
     ) {
         
         int total = 0;
-        String dbUrl = "jdbc:mysql://localhost/financasDB?zeroDateTimeBehavior=convertToNull";
-        String dbClass = "com.mysql.jdbc.Driver";
-        String userName = "root", password = "";
         String query = "";
         
         switch(col) {
@@ -346,9 +325,6 @@ public class FinancasService {
     ) {
         
         int total = 0;
-        String dbUrl = "jdbc:mysql://localhost/financasDB?zeroDateTimeBehavior=convertToNull";
-        String dbClass = "com.mysql.jdbc.Driver";
-        String userName = "root", password = "";
         
         String query = "UPDATE categoria SET nome = '" + nome + "' WHERE id = " + id + ";";
         
